@@ -1,0 +1,25 @@
+﻿# ===== Node / Vite =====
+node_modules/
+dist/
+*.tsbuildinfo
+
+# ===== Environment / secrets =====
+.env
+.env.local
+.env.*.local
+
+# ===== Logs =====
+*.log
+logs/
+
+# ===== OS junk =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== IDE =====
+.vs/
+.vscode/
+.idea/
+*.swp
+*.swo

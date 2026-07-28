@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-feature-settings: "cv11", "ss01";
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.3); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.5); }
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-[12.5px] font-semibold transition-colors;
+  }
+  .btn-primary {
+    @apply btn bg-admin-600 text-white hover:bg-admin-700 disabled:opacity-50;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-ink-700 dark:text-ink-200 hover:bg-ink-100 dark:hover:bg-ink-800;
+  }
+  .btn-outline {
+    @apply btn border border-ink-200 dark:border-ink-700 text-ink-700 dark:text-ink-200 hover:bg-ink-100 dark:hover:bg-ink-800;
+  }
+  .btn-bad {
+    @apply btn bg-bad-500 text-white hover:bg-bad-600 disabled:opacity-50;
+  }
+  .input {
+    @apply w-full rounded-lg border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-800 px-3 py-1.5 text-[13px] focus:outline-none focus:ring-2 focus:ring-admin-500;
+  }
+  .card {
+    @apply rounded-xl border border-ink-200/70 dark:border-ink-700/60 bg-white dark:bg-ink-800/70;
+  }
+  .stat-card {
+    @apply card p-4 flex flex-col gap-1;
+  }
+  .stat-label {
+    @apply text-[11px] uppercase tracking-wider font-semibold text-ink-500 dark:text-ink-400;
+  }
+  .stat-value {
+    @apply font-mono text-[22px] font-bold text-ink-900 dark:text-white;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10.5px] font-semibold uppercase tracking-wide;
+  }
+  .badge-ok    { @apply badge bg-ok-500/15 text-ok-600 dark:text-ok-500; }
+  .badge-warn  { @apply badge bg-warn-500/15 text-warn-600 dark:text-warn-500; }
+  .badge-bad   { @apply badge bg-bad-500/15 text-bad-600 dark:text-bad-500; }
+  .badge-info  { @apply badge bg-admin-500/15 text-admin-600 dark:text-admin-400; }
+  .badge-muted { @apply badge bg-ink-100 dark:bg-ink-700 text-ink-600 dark:text-ink-300; }
+  .table-th {
+    @apply px-3 py-2 text-left text-[10.5px] uppercase tracking-wider font-semibold text-ink-500 dark:text-ink-400 bg-ink-50/70 dark:bg-ink-800/40 border-b border-ink-200 dark:border-ink-700;
+  }
+  .table-td {
+    @apply px-3 py-2 text-[12.5px] text-ink-700 dark:text-ink-200 border-b border-ink-100 dark:border-ink-800/60;
+  }
+}
