@@ -97,23 +97,8 @@ export default function LoginPage() {
             </p>
           </div>
 
-          {/* Default credentials hint — visible only on first run. */}
-          <div className="rounded-lg border border-admin-500/30 bg-admin-500/5 px-3 py-2 text-[11.5px] text-admin-700 dark:text-admin-300 space-y-0.5">
-            <div className="font-semibold flex items-center gap-1.5">
-              <Sparkles className="h-3 w-3" />
-              First-time login?
-            </div>
-            <div className="font-mono text-[11px]">
-              admin@learne2i.co.in &nbsp;/&nbsp; change-me-immediately
-            </div>
-            <button
-              type="button"
-              onClick={() => { setEmail("admin@learne2i.co.in"); setPassword("change-me-immediately"); }}
-              className="text-[10.5px] underline underline-offset-2 hover:no-underline mt-0.5"
-            >
-              Use default credentials
-            </button>
-          </div>
+          {/* (Default-credentials hint removed — admin onboarding is one-time and
+              the seed credentials should not be displayed in the UI.) */}
 
           {expired && (
             <div className="rounded-lg border border-warn-500/40 bg-warn-500/10 px-3 py-2 text-[12px] text-warn-700 dark:text-warn-500 flex items-center gap-2">
@@ -139,7 +124,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   className="input pl-9"
-                  placeholder="you@learne2i.co.in"
+                  placeholder="you@learne2i.com"
                   required
                   disabled={busy}
                 />

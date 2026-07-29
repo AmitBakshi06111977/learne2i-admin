@@ -144,7 +144,7 @@ export default function DashboardLayout() {
         <header className="h-14 px-6 flex items-center justify-between border-b border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900 flex-shrink-0">
           <div className="flex items-center gap-3 text-[12px] text-ink-500 dark:text-ink-400">
             <Sparkles className="h-3.5 w-3.5 text-admin-500" />
-            <span>admin.learne2i.co.in</span>
+            <span>admin.learne2i.com</span>
             <span>·</span>
             <span>v0.1.0</span>
           </div>
