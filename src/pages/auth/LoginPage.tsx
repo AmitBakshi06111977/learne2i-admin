@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams, Link } from "react-router-dom";
-import { Shield, Loader2, Mail, Lock, AlertCircle, Sparkles } from "lucide-react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { Shield, Loader2, Mail, Lock, AlertCircle, CheckCircle2, KeyRound } from "lucide-react";
 import { apiPost, setToken, setAdminUser } from "../../lib/api";
 import toast from "react-hot-toast";
 
@@ -14,6 +14,9 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+  // Forgot-password state
+  const [resetSent, setResetSent] = useState(false);
+  const [resetting, setResetting] = useState(false);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,6 +39,20 @@ export default function LoginPage() {
       setErr(e?.message || "Login failed");
     } finally {
       setBusy(false);
+    }
+  };
+
+  const onForgot = async () => {
+    setErr(null);
+    setResetting(true);
+    try {
+      await apiPost("/api/admin/auth/forgot-password", {});
+      setResetSent(true);
+      toast.success("Check the platform owner's email for the new password.");
+    } catch (e: any) {
+      setErr(e?.message || "Could not send reset email.");
+    } finally {
+      setResetting(false);
     }
   };
 
@@ -156,9 +173,31 @@ export default function LoginPage() {
             {busy ? "Signing in…" : "Sign in"}
           </button>
 
-          <div className="text-center text-[11px] text-ink-500 dark:text-ink-400">
-            Forgot password?{" "}
-            <Link to="#" className="text-admin-600 hover:underline">Contact the platform owner</Link>
+          <div className="text-center text-[11px] text-ink-500 dark:text-ink-400 space-y-2">
+            {resetSent ? (
+              <div className="rounded-lg border border-ok-500/40 bg-ok-500/10 px-3 py-2 text-[12px] text-ok-700 dark:text-ok-500 flex items-center gap-2">
+                <CheckCircle2 className="h-3.5 w-3.5 shrink-0" />
+                <span>
+                  If an account exists, a new password has been emailed to the
+                  platform owner. Use the new password to sign in, then change
+                  it from the dashboard.
+                </span>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={onForgot}
+                disabled={resetting}
+                className="inline-flex items-center gap-1.5 text-admin-600 hover:underline disabled:opacity-50"
+              >
+                {resetting ? (
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                ) : (
+                  <KeyRound className="h-3 w-3" />
+                )}
+                Forgot password? Email me a new one
+              </button>
+            )}
           </div>
         </form>
       </div>
