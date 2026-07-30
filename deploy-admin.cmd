@@ -63,7 +63,7 @@ if not "%ERRORLEVEL%"=="0" goto DEPLOY_FAILED
 git log -1 --oneline >> "%LOG_FILE%" 2>&1
 
 REM ----- 3. Build the React frontend -----
-echo [%TS%] [3/6] Building React frontend...   >> "%LOG_FILE%"
+echo [%TS%] [3/6] Building React frontend + web.config...   >> "%LOG_FILE%"
 pushd "%APP_DIR%"
 
 where node >nul 2>&1
@@ -83,6 +83,18 @@ if not "%ERRORLEVEL%"=="0" goto DEPLOY_FAILED
 
 if not exist "dist\index.html" goto DEPLOY_FAILED
 echo [%TS%]   OK - dist\index.html found   >> "%LOG_FILE%"
+
+REM Ensure web.config (SPA rewrite rule) is present in dist\.
+REM Vite normally copies public\web.config -> dist\web.config automatically,
+REM but we copy it again here as a safety net so a fresh dist\ never serves
+REM without the SPA deep-link rewrite rule.
+if exist "web.config" (
+    copy /Y "web.config" "dist\web.config" >> "%LOG_FILE%" 2>&1
+    if not "%ERRORLEVEL%"=="0" goto DEPLOY_FAILED
+    echo [%TS%]   OK - web.config copied to dist\   >> "%LOG_FILE%"
+) else (
+    echo [%TS%]   WARNING: web.config not found at repo root - SPA deep links may 404.   >> "%LOG_FILE%"
+)
 
 popd
 
