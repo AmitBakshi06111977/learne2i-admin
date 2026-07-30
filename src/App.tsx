@@ -14,6 +14,7 @@ import AiControlsPage from "./pages/ai/AiControlsPage";
 import CommercePage from "./pages/commerce/CommercePage";
 import NotificationsPage from "./pages/notifications/NotificationsPage";
 import AuditLogPage from "./pages/audit/AuditLogPage";
+import ChangePasswordPage from "./pages/auth/ChangePasswordPage";
 
 function RequireAuth({ children }: { children: React.ReactNode }) {
   const location = useLocation();
@@ -53,6 +54,7 @@ export default function App() {
         <Route path="/commerce" element={<CommercePage />} />
         <Route path="/notifications" element={<NotificationsPage />} />
         <Route path="/audit-log" element={<AuditLogPage />} />
+        <Route path="/change-password" element={<ChangePasswordPage />} />
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Route>
     </Routes>

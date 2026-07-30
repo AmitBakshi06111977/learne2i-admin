@@ -2,7 +2,7 @@ import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
   LayoutDashboard, Users, BookOpen, FileText, BarChart3,
-  LogOut, Bell, ChevronDown, Sparkles, Brain, Settings2, Key,
+  LogOut, Bell, ChevronDown, Sparkles, Brain, Settings2, Key, KeyRound,
   Package2, Receipt, Megaphone, ShieldCheck
 } from "lucide-react";
 import { getAdminUser, clearAdminSession, apiPost } from "../lib/api";
@@ -30,6 +30,7 @@ const COMMERCE_NAV = [
 
 const SYSTEM_NAV = [
   { to: "/audit-log", icon: ShieldCheck, label: "Audit log" },
+  { to: "/change-password", icon: KeyRound, label: "Change password" },
 ];
 
 export default function DashboardLayout() {
