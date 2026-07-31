@@ -191,8 +191,31 @@ function ProductEdit({ p, onBack }: { p: Product; onBack: () => void }) {
         <Field label="Problem solved">
           <input className="input" value={form.problemSolved} onChange={e => set("problemSolved", e.target.value)} />
         </Field>
+        <Field label="Free product" hint="when checked, price is forced to 0 and shown as Free">
+          <label className="inline-flex items-center gap-2 cursor-pointer">
+            <input
+              type="checkbox"
+              className="h-4 w-4 rounded border-ink-300 text-admin-600 focus:ring-admin-500"
+              checked={form.isFree}
+              onChange={e => {
+                const checked = e.target.checked;
+                setForm(s => ({ ...s, isFree: checked, priceInr: checked ? 0 : (s.priceInr || 0) }));
+              }}
+            />
+            <span className="text-[12.5px]">This product is free (no payment required)</span>
+          </label>
+        </Field>
         <Field label="Price (INR, 0 = free)">
-          <input className="input" type="number" min={0} value={form.priceInr} onChange={e => set("priceInr", parseInt(e.target.value) || 0)} />
+          <input
+            className="input"
+            type="number"
+            min={0}
+            value={form.priceInr}
+            onChange={e => {
+              const v = parseInt(e.target.value) || 0;
+              setForm(s => ({ ...s, priceInr: v, isFree: v === 0 ? true : s.isFree }));
+            }}
+          />
         </Field>
         <Field label="Access duration">
           <input className="input" value={form.accessDuration} onChange={e => set("accessDuration", e.target.value)} />
