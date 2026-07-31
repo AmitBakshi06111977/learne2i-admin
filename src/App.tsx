@@ -13,6 +13,7 @@ import AiPromptsPage from "./pages/ai/AiPromptsPage";
 import AiControlsPage from "./pages/ai/AiControlsPage";
 import CommercePage from "./pages/commerce/CommercePage";
 import PaymentGatewaysPage from "./pages/commerce/PaymentGatewaysPage";
+import GuessPaperMarketingPage from "./pages/commerce/GuessPaperMarketingPage";
 import NotificationsPage from "./pages/notifications/NotificationsPage";
 import AuditLogPage from "./pages/audit/AuditLogPage";
 import ChangePasswordPage from "./pages/auth/ChangePasswordPage";
@@ -54,6 +55,7 @@ export default function App() {
         <Route path="/ai/controls" element={<AiControlsPage />} />
         <Route path="/commerce" element={<CommercePage />} />
         <Route path="/commerce/payment-gateways" element={<PaymentGatewaysPage />} />
+        <Route path="/commerce/guess-paper-marketing" element={<GuessPaperMarketingPage />} />
         <Route path="/notifications" element={<NotificationsPage />} />
         <Route path="/audit-log" element={<AuditLogPage />} />
         <Route path="/change-password" element={<ChangePasswordPage />} />
