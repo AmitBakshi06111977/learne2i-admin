@@ -12,6 +12,7 @@ import LlmConfigPage from "./pages/ai/LlmConfigPage";
 import AiPromptsPage from "./pages/ai/AiPromptsPage";
 import AiControlsPage from "./pages/ai/AiControlsPage";
 import CommercePage from "./pages/commerce/CommercePage";
+import PaymentGatewaysPage from "./pages/commerce/PaymentGatewaysPage";
 import NotificationsPage from "./pages/notifications/NotificationsPage";
 import AuditLogPage from "./pages/audit/AuditLogPage";
 import ChangePasswordPage from "./pages/auth/ChangePasswordPage";
@@ -52,6 +53,7 @@ export default function App() {
         <Route path="/ai/prompts" element={<AiPromptsPage />} />
         <Route path="/ai/controls" element={<AiControlsPage />} />
         <Route path="/commerce" element={<CommercePage />} />
+        <Route path="/commerce/payment-gateways" element={<PaymentGatewaysPage />} />
         <Route path="/notifications" element={<NotificationsPage />} />
         <Route path="/audit-log" element={<AuditLogPage />} />
         <Route path="/change-password" element={<ChangePasswordPage />} />
