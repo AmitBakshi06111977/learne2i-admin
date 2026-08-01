@@ -9,6 +9,7 @@ import UserProfilePage from "./pages/users/UserProfilePage";
 import QuestionsListPage from "./pages/questions/QuestionsListPage";
 import QuestionEditorPage from "./pages/questions/QuestionEditorPage";
 import QuestionsExportPage from "./pages/questions/QuestionsExportPage";
+import QuestionsImportPage from "./pages/questions/QuestionsImportPage";
 import LlmConfigPage from "./pages/ai/LlmConfigPage";
 import AiPromptsPage from "./pages/ai/AiPromptsPage";
 import AiControlsPage from "./pages/ai/AiControlsPage";
@@ -52,6 +53,7 @@ export default function App() {
         <Route path="/questions" element={<QuestionsListPage />} />
         <Route path="/questions/:questionId" element={<QuestionEditorPage />} />
         <Route path="/questions/export" element={<QuestionsExportPage />} />
+        <Route path="/questions/import" element={<QuestionsImportPage />} />
         <Route path="/llm-config" element={<LlmConfigPage />} />
         <Route path="/ai/prompts" element={<AiPromptsPage />} />
         <Route path="/ai/controls" element={<AiControlsPage />} />
