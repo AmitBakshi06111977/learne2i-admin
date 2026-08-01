@@ -6,6 +6,7 @@
 // the user-facing app's session.
 
 const API_BASE = (import.meta.env.VITE_API_URL ?? "").replace(/\/$/, "");
+export { API_BASE };
 const TOKEN_KEY = "learne2i_admin_token";
 const ADMIN_KEY = "learne2i_admin_user";
 

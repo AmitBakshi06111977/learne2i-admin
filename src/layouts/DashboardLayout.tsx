@@ -3,7 +3,7 @@ import { useState } from "react";
 import {
   LayoutDashboard, Users, BookOpen, FileText, BarChart3,
   LogOut, Bell, ChevronDown, Sparkles, Brain, Settings2, Key, KeyRound,
-  Package2, Receipt, Megaphone, ShieldCheck, CreditCard, FileSpreadsheet
+  Package2, Receipt, Megaphone, ShieldCheck, CreditCard, FileSpreadsheet, Download
 } from "lucide-react";
 import { getAdminUser, clearAdminSession, apiPost } from "../lib/api";
 import toast from "react-hot-toast";
@@ -12,6 +12,7 @@ const NAV = [
   { to: "/dashboard",   icon: LayoutDashboard, label: "Dashboard" },
   { to: "/users",       icon: Users,            label: "Users" },
   { to: "/questions",   icon: BookOpen,         label: "Questions" },
+  { to: "/questions/export", icon: Download,    label: "Download Q's" },
 ];
 
 const AI_NAV = [
