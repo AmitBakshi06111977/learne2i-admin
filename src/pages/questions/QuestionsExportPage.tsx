@@ -58,22 +58,16 @@ export default function QuestionsExportPage() {
     exam !== "" || subject !== "" || chapter !== "" || year !== "";
 
   const buildSummary = (): string => {
-    const parts: string[] = [];
-    if (exam) {
-      const e = exams.find(x => x.id === exam);
-      parts.push(`exam = ${e?.name ?? exam}`);
-    }
-    if (subject) {
-      const s = subjects.find(x => x.id === subject);
-      parts.push(`subject = ${s?.name ?? subject}`);
-    }
-    if (chapter) {
-      const c = chapters.find(x => x.id === chapter);
-      parts.push(`chapter = ${c?.name ?? chapter}`);
-    }
-    if (year !== "") parts.push(`year = ${year}`);
-    return parts.length ? parts.join(" · ") : "(everything — not allowed)";
-  };
+      const parts: string[] = [];
+      const e = exam    ? exams.find(x => x.id === exam)             : null;
+      const s = subject ? subjects.find(x => x.id === subject)       : null;
+      const c = chapter ? chapters.find(x => x.id === chapter)       : null;
+      parts.push(`exam = ${e?.name    ?? "All exams"}`);
+      parts.push(`subject = ${s?.name ?? "All subjects"}`);
+      parts.push(`chapter = ${c?.name ?? "All chapters"}`);
+      parts.push(`year = ${year === "" ? "All years" : String(year)}`);
+      return parts.join(" · ");
+    };
 
   const download = async () => {
     if (!atLeastOneFilter) {
@@ -171,7 +165,7 @@ export default function QuestionsExportPage() {
                 onChange={e => { setExam(e.target.value); setSubject(""); setChapter(""); }}
                 className="w-full rounded-lg border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-800 px-3 py-2 text-[13px]"
               >
-                <option value="">— Any —</option>
+                            <option value="">All exams</option>
                 {exams.map(e => <option key={e.id} value={e.id}>{e.name}</option>)}
               </select>
             </div>
@@ -183,7 +177,7 @@ export default function QuestionsExportPage() {
                 onChange={e => { setSubject(e.target.value); setChapter(""); }}
                 className="w-full rounded-lg border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-800 px-3 py-2 text-[13px]"
               >
-                <option value="">— Any —</option>
+                            <option value="">All subjects</option>
                 {filteredSubjects.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}
               </select>
             </div>
@@ -195,7 +189,7 @@ export default function QuestionsExportPage() {
                 onChange={e => setChapter(e.target.value)}
                 className="w-full rounded-lg border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-800 px-3 py-2 text-[13px]"
               >
-                <option value="">— Any —</option>
+                            <option value="">All chapters</option>
                 {filteredChapters.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
               </select>
             </div>
@@ -207,7 +201,7 @@ export default function QuestionsExportPage() {
                 onChange={e => setYear(e.target.value === "" ? "" : Number(e.target.value))}
                 className="w-full rounded-lg border border-ink-200 dark:border-ink-700 bg-white dark:bg-ink-800 px-3 py-2 text-[13px]"
               >
-                <option value="">— Any —</option>
+                            <option value="">All years</option>
                 {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
               </select>
             </div>
