@@ -174,6 +174,22 @@ export default function QuestionsImportPage() {
           column — existing rows are updated in place, rows with an empty id
           become new questions with a fresh id.
         </p>
+        <div className="mt-3 inline-flex items-start gap-2 rounded-lg border border-admin-200 dark:border-admin-700 bg-admin-50 dark:bg-admin-900/30 px-3 py-2 text-[12.5px] text-admin-800 dark:text-admin-200 max-w-2xl">
+          <span className="font-semibold">Need an empty template?</span>
+          <span>
+            Go to the{" "}
+            <a href="/questions/export" className="font-semibold underline">
+              Download Questions
+            </a>{" "}
+            section, pick any subject/year and download the zip — the
+            <code className="mx-1 px-1.5 py-0.5 rounded bg-white/60 dark:bg-ink-900/60 text-[11.5px]">
+              questions.xlsx
+            </code>
+            inside has every column pre-formatted. Delete the existing rows,
+            fill in your new questions (leave column A blank for new ones),
+            and upload it back here.
+          </span>
+        </div>
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-5">
